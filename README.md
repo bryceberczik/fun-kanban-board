@@ -1,1 +1,1 @@
-# fun-kanban-board
+# kanban-board
