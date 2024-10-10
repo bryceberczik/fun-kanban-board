@@ -26,7 +26,27 @@ export const login = async (req: Request, res: Response) => {
   return res.json({ token });
 };
 
+export const signUp = async (req: Request, res: Response) => {
+
+  try {
+    
+    const { username, password } = req.body;
+    const newUser = await User.create({ username, password });
+
+    const secretKey = process.env.JWT_SECRET_KEY || '';
+
+    const token = jwt.sign({ username: newUser.username }, secretKey, { expiresIn: '1h' });
+    res.json({ token });
+
+  } catch (error: any) {
+    
+    res.status(400).json({ message: error.message });
+  }
+}
+
 const router = Router();
+
+router.post("/signup", signUp);
 
 router.post("/login", login);
 
