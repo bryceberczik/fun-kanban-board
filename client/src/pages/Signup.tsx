@@ -1,7 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 
-import auth from "../utils/auth";
-import { signUp } from "../api/authAPI";
+import auth from "../utils/auth.js";
+import { signUp } from "../api/authAPI.js";
 import { UserLogin } from "../interfaces/UserLogin.js";
 
 const Signup = () => {
